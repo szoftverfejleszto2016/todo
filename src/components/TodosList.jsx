@@ -8,6 +8,8 @@ function TodosList(props) {
                 <TodoItem
                     key={todo.id}
                     todo={todo}
+                    kezel={props.kezel}
+                    torol={props.torol}
                 />
             )}
         </ul>

@@ -2,9 +2,18 @@ import React from 'react'
 
 function TodoItem(props) {
     return (
-        <div>
-            <li>{props.todo.title}</li>
-        </div>
+        <li>
+            <input
+                type="checkbox"
+                checked={props.todo.completed}
+                onChange={() => props.kezel(props.todo.id)}
+            />
+            <button
+                onClick={() => props.torol(props.todo.id)}>
+                Delete
+            </button>
+            {props.todo.title}
+        </li>
     )
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Header from './Header'
+import InputTodo from './InputTodo';
 import TodosList from './TodosList'
 
 function TodoContainer() {
@@ -21,10 +22,34 @@ function TodoContainer() {
         }
     ])
 
+    function valtozas(id) {
+        setTodos(function (elozo) {
+            return elozo.map(todo => {
+                if (todo.id === id)
+                    todo = { ...todo, completed: !todo.completed };
+                return todo;
+            })
+        });
+    }
+
+    function torles(id) {
+        setTodos(elozo => elozo.filter(todo => todo.id !== id));
+    }
+
+    function uj(newtitle) {
+        const newtodo = {
+            id: todos.length + 1,
+            title: newtitle,
+            completed: false
+        }
+        setTodos(elozo => [...elozo, newtodo]);
+    }
+
     return (
         <div>
             <Header />
-            <TodosList todos={todos} />
+            <InputTodo hozzaad={uj} />
+            <TodosList todos={todos} kezel={valtozas} torol={torles} />
         </div>
     )
 }
