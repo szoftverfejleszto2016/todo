@@ -46,10 +46,12 @@ function TodoContainer() {
     }
 
     return (
-        <div>
-            <Header />
-            <InputTodo hozzaad={uj} />
-            <TodosList todos={todos} kezel={valtozas} torol={torles} />
+        <div className="container">
+            <div className="inner">
+                <Header />
+                <InputTodo hozzaad={uj} />
+                <TodosList todos={todos} kezel={valtozas} torol={torles} />
+            </div>
         </div>
     )
 }

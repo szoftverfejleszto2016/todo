@@ -9,19 +9,21 @@ function InputTodo(props) {
 
     function gomb(e) {
         e.preventDefault();
-        props.hozzaad(title);
+        if (title.trim().length > 0)
+            props.hozzaad(title);
         setTitle("");
     }
 
     return (
-        <form onSubmit={gomb}>
+        <form onSubmit={gomb} className="form-container">
             <input
+                className="input-text"
                 type="text"
                 placeholder="Add Todo..."
                 value={title}
                 onChange={bevitel}
             />
-            <button>Submit</button>
+            <button className="input-submit">Submit</button>
         </form>
     )
 }
