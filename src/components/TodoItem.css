@@ -22,3 +22,9 @@
     margin: -10px 0 0 10px;
 }
 
+.item input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dfdfdf;
+}
+

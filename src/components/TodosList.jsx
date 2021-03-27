@@ -10,6 +10,7 @@ function TodosList(props) {
                     todo={todo}
                     kezel={props.kezel}
                     torol={props.torol}
+                    frissit={props.frissit}
                 />
             )}
         </ul>

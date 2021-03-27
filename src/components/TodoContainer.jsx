@@ -45,12 +45,27 @@ function TodoContainer() {
         setTodos(elozo => [...elozo, newtodo]);
     }
 
+    function frissites(newTitle, id) {
+        setTodos(function (elozo) {
+            return elozo.map(todo => {
+                if (todo.id === id)
+                    todo.title = newTitle;
+                return todo;
+            })
+        });
+    }
+
     return (
         <div className="container">
             <div className="inner">
                 <Header />
                 <InputTodo hozzaad={uj} />
-                <TodosList todos={todos} kezel={valtozas} torol={torles} />
+                <TodosList
+                    todos={todos}
+                    kezel={valtozas}
+                    torol={torles}
+                    frissit={frissites}
+                />
             </div>
         </div>
     )
