@@ -1,26 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './Header'
 import InputTodo from './InputTodo';
 import TodosList from './TodosList'
 
 function TodoContainer() {
-    const [todos, setTodos] = useState([
-        {
-            id: 1,
-            title: "Setup development environment",
-            completed: true
-        },
-        {
-            id: 2,
-            title: "Develop website and add content",
-            completed: false
-        },
-        {
-            id: 3,
-            title: "Deploy to live server",
-            completed: false
-        }
-    ])
+    const [todos, setTodos] = useState([]);
 
     function valtozas(id) {
         setTodos(function (elozo) {
@@ -54,6 +38,20 @@ function TodoContainer() {
             })
         });
     }
+
+    // betöltés
+    useEffect(() => {
+        const temp = localStorage.getItem("todos")
+        const loadedTodos = JSON.parse(temp)
+
+        if (loadedTodos)
+            setTodos(loadedTodos)
+    }, [])
+
+    // tárolás
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos))
+    }, [todos])
 
     return (
         <div className="container">
