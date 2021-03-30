@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./TodoItem.css"
+import { FaTrash } from "react-icons/fa"
 
 function TodoItem(props) {
     const completedStyle = {
@@ -39,7 +40,7 @@ function TodoItem(props) {
                 />
                 <button
                     onClick={() => props.torol(props.todo.id)}>
-                    Delete
+                    <FaTrash color="orangered" size="18px" />
                 </button>
                 <span style={props.todo.completed ? completedStyle : null}>
                     {props.todo.title}
