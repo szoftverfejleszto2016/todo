@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Header from './Header'
 import InputTodo from './InputTodo';
 import TodosList from './TodosList'
+import { Route, Switch } from 'react-router';
+import About from '../pages/About'
+import NoMatch from '../pages/NoMatch'
+import moduleName from './Navbar'
+import Navbar from './Navbar';
 
 function TodoContainer() {
     const [todos, setTodos] = useState([]);
@@ -54,18 +59,31 @@ function TodoContainer() {
     }, [todos])
 
     return (
-        <div className="container">
-            <div className="inner">
-                <Header />
-                <InputTodo hozzaad={uj} />
-                <TodosList
-                    todos={todos}
-                    kezel={valtozas}
-                    torol={torles}
-                    frissit={frissites}
-                />
-            </div>
-        </div>
+        <>
+            <Navbar />
+            <Switch>
+                <Route exact path="/">
+                    <div className="container">
+                        <div className="inner">
+                            <Header />
+                            <InputTodo hozzaad={uj} />
+                            <TodosList
+                                todos={todos}
+                                kezel={valtozas}
+                                torol={torles}
+                                frissit={frissites}
+                            />
+                        </div>
+                    </div>
+                </Route>
+                <Route path="/about">
+                    <About />
+                </Route>
+                <Route path="*">
+                    <NoMatch />
+                </Route>
+            </Switch>
+        </>
     )
 }
 
